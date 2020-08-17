@@ -134,6 +134,7 @@ async function fetchGasSpenings() {
       
     }
 
+    console.log(`Finished. Transaction have been written in gasSpendings.json`)
     
   } catch (err) {
     console.log(err);

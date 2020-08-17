@@ -1,0 +1,19 @@
+{
+  "name": "dxdao-gas-reimbursement",
+  "version": "0.1.0",
+  "main": "bot.js",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bot",
+    "prettier": "npx prettier --write ."
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "lowdb": "^1.0.0",
+    "web3": "^1.2.11"
+  },
+  "devDependencies": {
+    "prettier": "2.0.5"
+  }
+}

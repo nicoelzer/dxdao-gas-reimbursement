@@ -11,21 +11,23 @@ const FileSync = require("lowdb/adapters/FileSync");
 const schemeAdapter = new FileSync("./src/data/schemes.json");
 const gasSpendingAdapter = new FileSync("./src/data/gasSpendings.json");
 const gasSpendingsDB = low(gasSpendingAdapter);
+const AccountGasSpendingAdapter = new FileSync("./src/data/accountGasSpendings.json");
+const AccountGasSpendingsDB = low(AccountGasSpendingAdapter);
 const schemeDB = low(schemeAdapter);
 
 async function getEvents(
   contractAddress,
   startBlock,
+  endBlock,
   eventName,
   filter,
   contractAbi
 ) {
-  const latestBlock = await web3.eth.getBlockNumber();
   const contract = new web3.eth.Contract(contractAbi, contractAddress);
   var events = await contract.getPastEvents(eventName, {
     filter: filter,
     fromBlock: startBlock,
-    toBlock: latestBlock,
+    toBlock: endBlock,
   });
   return { events: events };
 }
@@ -66,11 +68,30 @@ function upsertScheme(filter, upsert) {
   }
 }
 
+
+
+
+
+function accountGasSpendingExists(filter) {
+  return AccountGasSpendingsDB.get("accountGasSpendings").find(filter).value() ? true : false;
+}
+
+function upsertAccountGasSpending(filter, upsert) {
+  if (!accountGasSpendingExists(filter)) {
+    AccountGasSpendingsDB.get("accountGasSpendings").push(upsert).write();
+    return "Insert";
+  } else {
+    AccountGasSpendingsDB.get("accountGasSpendings").chain().find(filter).assign(upsert).write();
+    return "Update";
+  }
+}
+
 module.exports = {
   getEvents,
   schemeExists,
   getSingleScheme,
   updateScheme,
   upsertScheme,
-  upsertGasSpending
+  upsertGasSpending,
+  upsertAccountGasSpending
 };

@@ -11,7 +11,9 @@ const FileSync = require("lowdb/adapters/FileSync");
 const schemeAdapter = new FileSync("./src/data/schemes.json");
 const gasSpendingAdapter = new FileSync("./src/data/gasSpendings.json");
 const gasSpendingsDB = low(gasSpendingAdapter);
-const AccountGasSpendingAdapter = new FileSync("./src/data/accountGasSpendings.json");
+const AccountGasSpendingAdapter = new FileSync(
+  "./src/data/accountGasSpendings.json"
+);
 const AccountGasSpendingsDB = low(AccountGasSpendingAdapter);
 const schemeDB = low(schemeAdapter);
 
@@ -53,7 +55,12 @@ function upsertGasSpending(filter, upsert) {
     gasSpendingsDB.get("gasSpendings").push(upsert).write();
     return "Insert";
   } else {
-    gasSpendingsDB.get("gasSpendings").chain().find(filter).assign(upsert).write();
+    gasSpendingsDB
+      .get("gasSpendings")
+      .chain()
+      .find(filter)
+      .assign(upsert)
+      .write();
     return "Update";
   }
 }
@@ -68,12 +75,10 @@ function upsertScheme(filter, upsert) {
   }
 }
 
-
-
-
-
 function accountGasSpendingExists(filter) {
-  return AccountGasSpendingsDB.get("accountGasSpendings").find(filter).value() ? true : false;
+  return AccountGasSpendingsDB.get("accountGasSpendings").find(filter).value()
+    ? true
+    : false;
 }
 
 function upsertAccountGasSpending(filter, upsert) {
@@ -81,7 +86,11 @@ function upsertAccountGasSpending(filter, upsert) {
     AccountGasSpendingsDB.get("accountGasSpendings").push(upsert).write();
     return "Insert";
   } else {
-    AccountGasSpendingsDB.get("accountGasSpendings").chain().find(filter).assign(upsert).write();
+    AccountGasSpendingsDB.get("accountGasSpendings")
+      .chain()
+      .find(filter)
+      .assign(upsert)
+      .write();
     return "Update";
   }
 }
@@ -93,5 +102,5 @@ module.exports = {
   updateScheme,
   upsertScheme,
   upsertGasSpending,
-  upsertAccountGasSpending
+  upsertAccountGasSpending,
 };

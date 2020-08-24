@@ -1,11 +1,11 @@
 {
   "name": "dxdao-gas-reimbursement",
   "version": "0.1.0",
-  "main": "bot.js",
+  "main": "getTransactions.js",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bot",
+    "start": "node getTransactions && node aggregateTransactions",
     "prettier": "npx prettier --write ."
   },
   "dependencies": {

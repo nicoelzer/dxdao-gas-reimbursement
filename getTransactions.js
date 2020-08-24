@@ -4,13 +4,8 @@ const low = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
 const gasSpendingAdapter = new FileSync("./src/data/gasSpendings.json");
 const gasSpendingsDB = low(gasSpendingAdapter);
-const AccountGasSpendingAdapter = new FileSync(
-  "./src/data/accountGasSpendings.json"
-);
 const schemeAdapter = new FileSync("./src/data/schemes.json");
 const schemeDB = low(schemeAdapter);
-const { contracts } = require("./src/data/baseContracts.js");
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const web3 = new Web3(
   new Web3.providers.HttpProvider(
     `https://${process.env.NETWORK}.infura.io/v3/${process.env.INFURAKEY}`
@@ -192,65 +187,6 @@ async function fetchGasSpenings() {
 
   console.log(
     `Transactions written to ./data/gasSpendings.json aggregating data now....`
-  );
-
-  aggregateData();
-}
-
-async function aggregateData() {
-  const AccountGasSpendingsDB = low(AccountGasSpendingAdapter);
-  console.log("Starting to aggregate data")
-  let uniqueAccounts = await AccountGasSpendingsDB.get(
-    "accountGasSpendings"
-  ).value();
-
-  for (var i in uniqueAccounts) {
-    console.log(uniqueAccounts[i])
-    let votes = await gasSpendingsDB
-      .get("gasSpendings")
-      .filter({ from: uniqueAccounts[i].id, action: "voting" })
-      .value();
-    let stakings = await gasSpendingsDB
-      .get("gasSpendings")
-      .filter({ from: uniqueAccounts[i].id, action: "staking" })
-      .value();
-    let proposals = await gasSpendingsDB
-      .get("gasSpendings")
-      .filter({ from: uniqueAccounts[i].id, action: "proposalCreation" })
-      .value();
-
-    console.log(`votes: ${votes.length} stakings: ${stakings.length} proposals: ${proposals.length}`)
-
-    let votesSpending = 0,
-      stakingSpending = 0,
-      proposalCreationsSpending = 0;
-    for (var v in votes) {
-      console.log(votes[v])
-      votesSpending = votesSpending + votes[v].gasTotal;
-    }
-    for (var s in stakings) {
-      stakingSpending = stakingSpending + stakings[s].gasTotal;
-    }
-
-    for (var p in proposals) {
-      proposalCreationsSpending =
-        proposalCreationsSpending + proposals[p].gasTotal;
-    }
-
-    upsertAccountGasSpending(
-      { id: uniqueAccounts[i].id },
-      {
-        totalVotes: votes.length,
-        votesSpending: votesSpending,
-        totalStakings: stakings.length,
-        stakingSpending: stakingSpending,
-        totalProposalCreations: proposals.length,
-        proposalCreationSpending: proposalCreationsSpending,
-      }
-    );
-  }
-  console.log(
-    `Finished... written aggregated data to ./data/accountGasSpendings.json...`
   );
 }
 

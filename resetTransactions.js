@@ -8,6 +8,10 @@ let gasSpendings = {
   gasSpendings: [],
 };
 
+let overallSpendings = {
+  overallSpendings: [],
+};
+
 fs.writeFile(
   "./src/data/accountGasSpendings.json",
   JSON.stringify(accountGasSpendings),
@@ -23,5 +27,14 @@ fs.writeFile(
   (err) => {
     if (err) throw err;
     console.log("Reset gasSpendings.json");
+  }
+);
+
+fs.writeFile(
+  "./src/data/overallSpendings.json",
+  JSON.stringify(overallSpendings),
+  (err) => {
+    if (err) throw err;
+    console.log("Reset overallSpendings.json");
   }
 );

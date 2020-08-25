@@ -28,7 +28,9 @@ async function fetchGasSpenings() {
       !votingMachines.includes(scheme[j].votingMachineAddress) &&
       scheme[j].votingMachineAddress
     ) {
-      console.log(`Searching for proposals on voting machine ${scheme[j].votingMachineAddress}`)
+      console.log(
+        `Searching for proposals on voting machine ${scheme[j].votingMachineAddress}`
+      );
       let latestBlock = await web3.eth.getBlockNumber();
       let orgFilter = { _organization: process.env.AVATAR_ADDRESS };
 
@@ -64,9 +66,7 @@ async function fetchGasSpenings() {
         console.log(
           `Found ${votes.events.length} vote, ${stakes.events.length} staking & ${proposalCreations.events.length} proposalCreation transactions.`
         );
-        console.log(
-          `Processing now...`
-        );
+        console.log(`Processing now...`);
 
         for (var i in votes.events) {
           var receipt = await web3.eth.getTransactionReceipt(

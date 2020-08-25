@@ -5,9 +5,10 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node resetTransactions && node getTransactions && node aggregateTransactions",
+    "start": "node resetTransactions && node getTransactions && node aggregateTransactions && node calculateReimbursements",
     "reset": "node resetTransactions",
-    "prettier": "npx prettier --write ."
+    "prettier": "npx prettier --write .",
+    "reimbursement": "node calculateReimbursements"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

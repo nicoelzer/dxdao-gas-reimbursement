@@ -77,7 +77,7 @@ async function calculateReimbursements() {
   }
 
   console.log(JSON.stringify(addressesArr));
-  console.log("");
+  console.log(",");
   console.log(JSON.stringify(reimbursementArr));
 }
 

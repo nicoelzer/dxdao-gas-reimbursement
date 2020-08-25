@@ -1,1 +1,13 @@
-{"overallSpendings":[]}
+{
+  "overallSpendings": [
+    {
+      "id": "overall",
+      "overallVotesSpending": 483816709118807200000,
+      "overallStakingsSpending": 172245556325413750000,
+      "overallProposalCreationsSpending": 133673305536556070000,
+      "overallVotes": 494,
+      "overallStakings": 201,
+      "overallProposal": 141
+    }
+  ]
+}

@@ -60,22 +60,14 @@ async function calculateReimbursements() {
     upsertAccountGasSpending(
       { id: uniqueAccounts[u].id },
       {
-        reimbursementVotes:
-          (uniqueAccounts[u].votesSpending / 100) * process.env.VOTING,
-        reimbursementStakings:
-          (uniqueAccounts[u].stakingSpending / 100) * process.env.STAKING,
-        reimbursementProposalCreations:
-          (uniqueAccounts[u].proposalCreationSpending / 100) *
-          process.env.PROPOSAL_CREATION,
-        totalReimbusement:
-          (uniqueAccounts[u].votesSpending / 100) * process.env.VOTING +
-          (uniqueAccounts[u].stakingSpending / 100) * process.env.STAKING +
-          (uniqueAccounts[u].proposalCreationSpending / 100) *
-            process.env.PROPOSAL_CREATION,
+        reimbursementVotes: reimbursementVotes,
+        reimbursementStakings: reimbursementStakings,
+        reimbursementProposalCreations: reimbursementProposalCreations,
+        totalReimbusement: totalReimbusement,
       }
     );
   }
-
+  console.log("Reimbursment data to copy & paste:");
   console.log(JSON.stringify(addressesArr));
   console.log(",");
   console.log(JSON.stringify(reimbursementArr));

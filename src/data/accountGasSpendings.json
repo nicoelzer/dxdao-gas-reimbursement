@@ -1,1 +1,58 @@
-{"accountGasSpendings":[]}
+{
+  "accountGasSpendings": [
+    {
+      "id": "0x88f1706c20d94A4d1551C5F799C9E3380A24C3AC",
+      "totalVotes": 0,
+      "votesSpending": 0,
+      "totalStakings": 0,
+      "stakingSpending": 0,
+      "totalProposalCreations": 0,
+      "proposalCreationSpending": 0
+    },
+    {
+      "id": "0xb33B9FBA681653Fe263B31A95766d83D18c2128D",
+      "totalVotes": 0,
+      "votesSpending": 0,
+      "totalStakings": 0,
+      "stakingSpending": 0,
+      "totalProposalCreations": 0,
+      "proposalCreationSpending": 0
+    },
+    {
+      "id": "0x730fd267EF60b27615324b94BF0bc7eD15d52718",
+      "totalVotes": 0,
+      "votesSpending": 0,
+      "totalStakings": 0,
+      "stakingSpending": 0,
+      "totalProposalCreations": 0,
+      "proposalCreationSpending": 0
+    },
+    {
+      "id": "0xb0e83C2D71A991017e0116d58c5765Abc57384af",
+      "totalVotes": 0,
+      "votesSpending": 0,
+      "totalStakings": 0,
+      "stakingSpending": 0,
+      "totalProposalCreations": 0,
+      "proposalCreationSpending": 0
+    },
+    {
+      "id": "0xE7c6459FB1B5C02Cc454e48291D716799fe01aA2",
+      "totalVotes": 0,
+      "votesSpending": 0,
+      "totalStakings": 0,
+      "stakingSpending": 0,
+      "totalProposalCreations": 0,
+      "proposalCreationSpending": 0
+    },
+    {
+      "id": "0x399c7819840329E2B73449d6afcF7f4Fd71399b2",
+      "totalVotes": 0,
+      "votesSpending": 0,
+      "totalStakings": 0,
+      "stakingSpending": 0,
+      "totalProposalCreations": 0,
+      "proposalCreationSpending": 0
+    }
+  ]
+}

@@ -1,1 +1,191 @@
-{"gasSpendings":[]}
+{
+  "gasSpendings": [
+    {
+      "id": "0x020d4b2dacaddc0fc0d1abb81a5cdfb52f68c34c56dd8b6bd50965f6c15423e6",
+      "proposalId": "0xf099a0b49dd40e40e1dbcc8d1b7be1d73d5e7bc589f4e02c2358db643f54b978",
+      "transactionHash": "0x020d4b2dacaddc0fc0d1abb81a5cdfb52f68c34c56dd8b6bd50965f6c15423e6",
+      "from": "0x88f1706c20d94A4d1551C5F799C9E3380A24C3AC",
+      "gas": 317690,
+      "gasPrice": 15000000000,
+      "gasTotal": 4765350000000000,
+      "action": "voting",
+      "timestamp": 1588941643
+    },
+    {
+      "id": "0xf3935e47c27c2b6b5ea7593c50f99b5cd3ae075bc2afaaeb984bccbda251a348",
+      "proposalId": "0x2155ca4e4344447f1e86cb95e9be413348ee82274c1bcacee446e5954bd960dd",
+      "transactionHash": "0xf3935e47c27c2b6b5ea7593c50f99b5cd3ae075bc2afaaeb984bccbda251a348",
+      "from": "0x88f1706c20d94A4d1551C5F799C9E3380A24C3AC",
+      "gas": 267893,
+      "gasPrice": 15000000000,
+      "gasTotal": 4018395000000000,
+      "action": "voting",
+      "timestamp": 1588941909
+    },
+    {
+      "id": "0x3ee4cce4dd85bc38c8f6e865f1f125158ee2037b7321f760f9086fa3a2a3a1ce",
+      "proposalId": "0xf5d5ba5f28a30289e6efcd2bde726144b5409fcfa1f5f52bd5ae6fc1c46a8b79",
+      "transactionHash": "0x3ee4cce4dd85bc38c8f6e865f1f125158ee2037b7321f760f9086fa3a2a3a1ce",
+      "from": "0xb33B9FBA681653Fe263B31A95766d83D18c2128D",
+      "gas": 454017,
+      "gasPrice": 21000000001,
+      "gasTotal": 9534357000454016,
+      "action": "voting",
+      "timestamp": 1588961006
+    },
+    {
+      "id": "0xddda279a62bc97862ebc9085a55b0fca358ca5dc802956986e61d1504638327e",
+      "proposalId": "0xf099a0b49dd40e40e1dbcc8d1b7be1d73d5e7bc589f4e02c2358db643f54b978",
+      "transactionHash": "0xddda279a62bc97862ebc9085a55b0fca358ca5dc802956986e61d1504638327e",
+      "from": "0x730fd267EF60b27615324b94BF0bc7eD15d52718",
+      "gas": 322074,
+      "gasPrice": 15000000001,
+      "gasTotal": 4831110000322074,
+      "action": "voting",
+      "timestamp": 1588963235
+    },
+    {
+      "id": "0x52d49c38219aae1615a9bbc73a25e116bd8c2697c17f4d0f1fdc37a373f2e53d",
+      "proposalId": "0xf5d5ba5f28a30289e6efcd2bde726144b5409fcfa1f5f52bd5ae6fc1c46a8b79",
+      "transactionHash": "0x52d49c38219aae1615a9bbc73a25e116bd8c2697c17f4d0f1fdc37a373f2e53d",
+      "from": "0x730fd267EF60b27615324b94BF0bc7eD15d52718",
+      "gas": 445626,
+      "gasPrice": 15000000001,
+      "gasTotal": 6684390000445626,
+      "action": "voting",
+      "timestamp": 1588963314
+    },
+    {
+      "id": "0x4909028f9aea6ed1ae46bb3356837a96110e03aa1bb11ab92e2c99300e76afb3",
+      "proposalId": "0x78929822a8abec81e5faf670f39bae4b0bddf9386010e0ad3524396cf2eb1ba9",
+      "transactionHash": "0x4909028f9aea6ed1ae46bb3356837a96110e03aa1bb11ab92e2c99300e76afb3",
+      "from": "0x730fd267EF60b27615324b94BF0bc7eD15d52718",
+      "gas": 495705,
+      "gasPrice": 15000000001,
+      "gasTotal": 7435575000495705,
+      "action": "voting",
+      "timestamp": 1588963576
+    },
+    {
+      "id": "0xc9c1a53fdbc9359caf5faf2ea4073605c2fa759c930cc9e62eb3e9e606b6016e",
+      "proposalId": "0xd2a7e582252cb7b7a771515a90a357283692e74879b303c81679c80cee55c30d",
+      "transactionHash": "0xc9c1a53fdbc9359caf5faf2ea4073605c2fa759c930cc9e62eb3e9e606b6016e",
+      "from": "0x730fd267EF60b27615324b94BF0bc7eD15d52718",
+      "gas": 495721,
+      "gasPrice": 15000000001,
+      "gasTotal": 7435815000495721,
+      "action": "voting",
+      "timestamp": 1588963656
+    },
+    {
+      "id": "0x6a23861131bda696d154ac86e5ab9d0756fbdfe1e36ade8f69add221ed4189fd",
+      "proposalId": "0x11bfab6550819de6300aa60204eb4b4112323853c0073c9a22c8aba7fd3b8f27",
+      "transactionHash": "0x6a23861131bda696d154ac86e5ab9d0756fbdfe1e36ade8f69add221ed4189fd",
+      "from": "0x730fd267EF60b27615324b94BF0bc7eD15d52718",
+      "gas": 341139,
+      "gasPrice": 15000000001,
+      "gasTotal": 5117085000341139,
+      "action": "voting",
+      "timestamp": 1588963772
+    },
+    {
+      "id": "0xe832b46792eac58ed243c5a000fc2f112398e9dd740aff26a513bf48d6d2f0df",
+      "proposalId": "0x3e579ae173062b057d09ca5a1791e36d62989c59071b5b065801792a845b0dc6",
+      "transactionHash": "0xe832b46792eac58ed243c5a000fc2f112398e9dd740aff26a513bf48d6d2f0df",
+      "from": "0x730fd267EF60b27615324b94BF0bc7eD15d52718",
+      "gas": 494109,
+      "gasPrice": 15000000001,
+      "gasTotal": 7411635000494109,
+      "action": "voting",
+      "timestamp": 1588963825
+    },
+    {
+      "id": "0x7085ead368942125f3c4911d9330fb26f7dedca5832a4001d2704c7372b2067d",
+      "proposalId": "0xdbc9a4d8845c632421ec88dd30c4e457c6e6c624a1dcb824fabfe43d00645d9f",
+      "transactionHash": "0x7085ead368942125f3c4911d9330fb26f7dedca5832a4001d2704c7372b2067d",
+      "from": "0x730fd267EF60b27615324b94BF0bc7eD15d52718",
+      "gas": 495701,
+      "gasPrice": 15000000001,
+      "gasTotal": 7435515000495701,
+      "action": "voting",
+      "timestamp": 1588963907
+    },
+    {
+      "id": "0x38030744421a8d63dbc9e951c9b92db9c05cb746d07ac74224a273c617281fd7",
+      "proposalId": "0x55ed6f90e0d70cf2cbb153d052c8989e93ffa2349e1708e8fc51f99025436178",
+      "transactionHash": "0x38030744421a8d63dbc9e951c9b92db9c05cb746d07ac74224a273c617281fd7",
+      "from": "0xb0e83C2D71A991017e0116d58c5765Abc57384af",
+      "gas": 281754,
+      "gasPrice": 13530000000,
+      "gasTotal": 3812131620000000,
+      "action": "voting",
+      "timestamp": 1589039422
+    },
+    {
+      "id": "0x0c242c83790c19138a9f2c4e217d6b04f9c887987544a5bc096aa6e40394c2f3",
+      "proposalId": "0xa48de63a29b0b3fb7495e098c8f72a19ee66a9259686acd844738c9689e91795",
+      "transactionHash": "0x0c242c83790c19138a9f2c4e217d6b04f9c887987544a5bc096aa6e40394c2f3",
+      "from": "0xb0e83C2D71A991017e0116d58c5765Abc57384af",
+      "gas": 285516,
+      "gasPrice": 13530000000,
+      "gasTotal": 3863031480000000,
+      "action": "voting",
+      "timestamp": 1589039496
+    },
+    {
+      "id": "0x7ef9622559b186b5c0a78d74bbf73b1f57c527e1060ef2609f5b102d8f479e1e",
+      "proposalId": "0x60c035ec11ccb91283daafbd6228673913fd0f71a52382ab363ab14be45c1e56",
+      "transactionHash": "0x7ef9622559b186b5c0a78d74bbf73b1f57c527e1060ef2609f5b102d8f479e1e",
+      "from": "0xb0e83C2D71A991017e0116d58c5765Abc57384af",
+      "gas": 285524,
+      "gasPrice": 10000000000,
+      "gasTotal": 2855240000000000,
+      "action": "voting",
+      "timestamp": 1589040393
+    },
+    {
+      "id": "0xd768a4071196b200250215ce212f8a474add1c6c499b1fa509839018dfc8b8b8",
+      "proposalId": "0xf099a0b49dd40e40e1dbcc8d1b7be1d73d5e7bc589f4e02c2358db643f54b978",
+      "transactionHash": "0xd768a4071196b200250215ce212f8a474add1c6c499b1fa509839018dfc8b8b8",
+      "from": "0xb0e83C2D71A991017e0116d58c5765Abc57384af",
+      "gas": 267893,
+      "gasPrice": 10000000000,
+      "gasTotal": 2678930000000000,
+      "action": "voting",
+      "timestamp": 1589040409
+    },
+    {
+      "id": "0xe0f1e84784de578abe80971b47f2d8cc7a6946b864a1181ef2eb5d89e06e3a98",
+      "proposalId": "0x2155ca4e4344447f1e86cb95e9be413348ee82274c1bcacee446e5954bd960dd",
+      "transactionHash": "0xe0f1e84784de578abe80971b47f2d8cc7a6946b864a1181ef2eb5d89e06e3a98",
+      "from": "0xE7c6459FB1B5C02Cc454e48291D716799fe01aA2",
+      "gas": 271647,
+      "gasPrice": 10000000000,
+      "gasTotal": 2716470000000000,
+      "action": "voting",
+      "timestamp": 1589050341
+    },
+    {
+      "id": "0xb197f4b8b561157d34f9f6a6c83b34f8873480dc0529976e8a5b49825a79565d",
+      "proposalId": "0x2155ca4e4344447f1e86cb95e9be413348ee82274c1bcacee446e5954bd960dd",
+      "transactionHash": "0xb197f4b8b561157d34f9f6a6c83b34f8873480dc0529976e8a5b49825a79565d",
+      "from": "0x399c7819840329E2B73449d6afcF7f4Fd71399b2",
+      "gas": 314638,
+      "gasPrice": 10000000001,
+      "gasTotal": 3146380000314638,
+      "action": "voting",
+      "timestamp": 1589051117
+    },
+    {
+      "id": "0x7e085f5a13d577129fe6b5e53e53da443060b8e97beeca83264a14e14cd758c2",
+      "proposalId": "0x2155ca4e4344447f1e86cb95e9be413348ee82274c1bcacee446e5954bd960dd",
+      "transactionHash": "0x7e085f5a13d577129fe6b5e53e53da443060b8e97beeca83264a14e14cd758c2",
+      "from": "0xb33B9FBA681653Fe263B31A95766d83D18c2128D",
+      "gas": 313763,
+      "gasPrice": 8000000001,
+      "gasTotal": 2510104000313763,
+      "action": "voting",
+      "timestamp": 1589059193
+    }
+  ]
+}

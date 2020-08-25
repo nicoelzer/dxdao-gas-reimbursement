@@ -24,15 +24,16 @@ async function aggregateData() {
     "./src/data/accountGasSpendings.json"
   );
   const AccountGasSpendingsDB = low(AccountGasSpendingAdapter);
-  console.log("Starting to aggregate data")
+  console.log("Starting to aggregate data");
   let uniqueAccounts = await AccountGasSpendingsDB.get(
     "accountGasSpendings"
   ).value();
   let votes, stakings, proposals;
-  let votesSpending = 0, stakingSpending = 0, proposalCreationsSpending = 0;
+  let votesSpending = 0,
+    stakingSpending = 0,
+    proposalCreationsSpending = 0;
 
   for (var u in uniqueAccounts) {
-    console.log(uniqueAccounts[u])
     votes = await gasSpendingsDB
       .get("gasSpendings")
       .filter({ from: uniqueAccounts[u].id, action: "voting" })
@@ -45,7 +46,7 @@ async function aggregateData() {
       .get("gasSpendings")
       .filter({ from: uniqueAccounts[u].id, action: "proposalCreation" })
       .value();
-    
+
     for (var v in votes) {
       votesSpending = votesSpending + votes[v].gasTotal;
     }

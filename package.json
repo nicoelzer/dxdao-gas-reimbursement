@@ -5,7 +5,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node getTransactions && node aggregateTransactions",
+    "start": "node resetTransactions && node getTransactions && node aggregateTransactions",
+    "reset": "node resetTransactions",
     "prettier": "npx prettier --write ."
   },
   "dependencies": {

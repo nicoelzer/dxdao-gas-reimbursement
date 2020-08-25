@@ -18,7 +18,7 @@ const {
 } = require("./src/utils/utils.js");
 
 async function fetchGasSpenings() {
-  console.log("Started fetching gas Spendings...");
+  console.log("Started fetching transactions...");
   let scheme = await schemeDB.get("schemes").value();
   let filter = { _organization: process.env.AVATAR_ADDRESS };
   let latestBlock = await web3.eth.getBlockNumber();
@@ -28,6 +28,7 @@ async function fetchGasSpenings() {
       !votingMachines.includes(scheme[j].votingMachineAddress) &&
       scheme[j].votingMachineAddress
     ) {
+      console.log(`Searching for proposals on voting machine ${scheme[j].votingMachineAddress}`)
       let latestBlock = await web3.eth.getBlockNumber();
       let orgFilter = { _organization: process.env.AVATAR_ADDRESS };
 
@@ -61,7 +62,10 @@ async function fetchGasSpenings() {
         );
 
         console.log(
-          `Found ${votes.events.length} vote, ${stakes.events.length} staking & ${proposalCreations.events.length} proposalCreation transactions on ${scheme[j].name} (Voting Machine)`
+          `Found ${votes.events.length} vote, ${stakes.events.length} staking & ${proposalCreations.events.length} proposalCreation transactions.`
+        );
+        console.log(
+          `Processing now...`
         );
 
         for (var i in votes.events) {
@@ -75,13 +79,16 @@ async function fetchGasSpenings() {
 
           upsertAccountGasSpending(
             { id: votes.events[i].returnValues._voter },
-            { id: votes.events[i].returnValues._voter,
+            {
+              id: votes.events[i].returnValues._voter,
               totalVotes: 0,
               votesSpending: 0,
               totalStakings: 0,
               stakingSpending: 0,
               totalProposalCreations: 0,
-              proposalCreationSpending: 0 });
+              proposalCreationSpending: 0,
+            }
+          );
 
           if (receipt.status) {
             upsertGasSpending(
@@ -112,14 +119,18 @@ async function fetchGasSpenings() {
             proposalCreations.events[i].blockNumber
           );
 
-          upsertAccountGasSpending({ id: tx.from }, 
-            { id: tx.from,
+          upsertAccountGasSpending(
+            { id: tx.from },
+            {
+              id: tx.from,
               totalVotes: 0,
               votesSpending: 0,
               totalStakings: 0,
               stakingSpending: 0,
               totalProposalCreations: 0,
-              proposalCreationSpending: 0 });
+              proposalCreationSpending: 0,
+            }
+          );
 
           if (receipt.status) {
             upsertGasSpending(
@@ -151,13 +162,15 @@ async function fetchGasSpenings() {
 
           upsertAccountGasSpending(
             { id: stakes.events[i].returnValues._staker },
-            { id: stakes.events[i].returnValues._staker,
+            {
+              id: stakes.events[i].returnValues._staker,
               totalVotes: 0,
               votesSpending: 0,
               totalStakings: 0,
               stakingSpending: 0,
               totalProposalCreations: 0,
-              proposalCreationSpending: 0 }
+              proposalCreationSpending: 0,
+            }
           );
 
           if (receipt.status) {
@@ -178,10 +191,6 @@ async function fetchGasSpenings() {
           }
         }
       }
-    } else {
-      console.log(
-        `Skipping ${scheme[j].name} – voting machine already scanned.`
-      );
     }
   }
 

@@ -2,12 +2,12 @@
   "overallSpendings": [
     {
       "id": "overall",
-      "overallVotesSpending": 483816709118807200000,
-      "overallStakingsSpending": 172245556325413750000,
-      "overallProposalCreationsSpending": 133673305536556070000,
-      "overallVotes": 494,
-      "overallStakings": 201,
-      "overallProposal": 141
+      "overallVotesSpending": 5487577043885406000,
+      "overallStakingsSpending": 2873676871282412000,
+      "overallProposalCreationsSpending": 2526894480987972000,
+      "overallVotes": 495,
+      "overallStakings": 203,
+      "overallProposal": 142
     }
   ]
 }

@@ -32,9 +32,9 @@ async function calculateReimbursements() {
     "accountGasSpendings"
   ).value();
 
-  let reimbursementVotes,
-    reimbursementStakings,
-    reimbursementProposalCreations,
+  let reimbursementVotes = 0,
+    reimbursementStakings = 0,
+    reimbursementProposalCreations = 0,
     totalReimbusement = 0;
 
   let addressesArr = [];

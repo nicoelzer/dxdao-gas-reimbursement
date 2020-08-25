@@ -42,11 +42,10 @@ async function aggregateData() {
     "accountGasSpendings"
   ).value();
   let votes, stakings, proposals;
-  let votesSpending = 0,
-    stakingSpending = 0,
-    proposalCreationsSpending = 0;
-
   for (var u in uniqueAccounts) {
+    let votesSpending = 0,
+      stakingSpending = 0,
+      proposalCreationsSpending = 0;
     votes = await gasSpendingsDB
       .get("gasSpendings")
       .filter({ from: uniqueAccounts[u].id, action: "voting" })

@@ -120,9 +120,9 @@ async function fetchGasSpenings() {
           );
 
           upsertAccountGasSpending(
-            { id: tx.from },
+            { id: proposalCreations.events[i].returnValues._proposer },
             {
-              id: tx.from,
+              id: proposalCreations.events[i].returnValues._proposer,
               totalVotes: 0,
               votesSpending: 0,
               totalStakings: 0,
@@ -140,7 +140,7 @@ async function fetchGasSpenings() {
                 proposalId:
                   proposalCreations.events[i].returnValues._proposalId,
                 transactionHash: proposalCreations.events[i].transactionHash,
-                from: tx.from,
+                from: proposalCreations.events[i].returnValues._proposer,
                 gas: receipt.gasUsed,
                 gasPrice: parseInt(tx.gasPrice),
                 gasTotal: receipt.gasUsed * tx.gasPrice,

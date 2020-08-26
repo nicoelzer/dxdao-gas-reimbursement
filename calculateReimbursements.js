@@ -55,7 +55,7 @@ async function calculateReimbursements() {
         process.env.PROPOSAL_CREATION;
 
     addressesArr.push(uniqueAccounts[u].id);
-    reimbursementArr.push(uniqueAccounts[u].votesSpending);
+    reimbursementArr.push(uniqueAccounts[u].totalReimbusement);
 
     upsertAccountGasSpending(
       { id: uniqueAccounts[u].id },

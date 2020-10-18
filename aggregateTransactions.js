@@ -31,12 +31,16 @@ async function aggregateData() {
   let overallVotesSpending = 0,
     overallStakingsSpending = 0,
     overallProposalCreationsSpending = 0,
+    overallExecutionsSpending = 0,
     overallVotes = 0,
     overallStakings = 0,
     overallProposal = 0,
+    overallExecutions = 0,
+    proposalExecutionsSpending = 0,
     reimbursementVotes = 0,
     reimbursementStakings = 0,
     reimbursementProposalCreations = 0;
+  reimbursementExecutions = 0;
 
   let uniqueAccounts = await AccountGasSpendingsDB.get(
     "accountGasSpendings"
@@ -46,6 +50,7 @@ async function aggregateData() {
     let votesSpending = 0,
       stakingSpending = 0,
       proposalCreationsSpending = 0;
+    proposalExecutionsSpending = 0;
     votes = await gasSpendingsDB
       .get("gasSpendings")
       .filter({ from: uniqueAccounts[u].id, action: "voting" })
@@ -57,6 +62,10 @@ async function aggregateData() {
     proposals = await gasSpendingsDB
       .get("gasSpendings")
       .filter({ from: uniqueAccounts[u].id, action: "proposalCreation" })
+      .value();
+    executions = await gasSpendingsDB
+      .get("gasSpendings")
+      .filter({ from: uniqueAccounts[u].id, action: "proposalExecutions" })
       .value();
 
     for (var v in votes) {
@@ -71,13 +80,21 @@ async function aggregateData() {
         proposalCreationsSpending + proposals[p].gasTotal;
     }
 
+    for (var e in executions) {
+      proposalExecutionsSpending =
+        proposalExecutionsSpending + executions[e].gasTotal;
+    }
+
     (overallVotesSpending = overallVotesSpending + votesSpending),
       (overallStakingsSpending = overallStakingsSpending + stakingSpending),
       (overallProposalCreationsSpending =
         overallProposalCreationsSpending + proposalCreationsSpending),
+      (overallExecutionsSpending =
+        overallExecutionsSpending + proposalExecutionsSpending),
       (overallVotes = overallVotes + votes.length),
       (overallStakings = overallStakings + stakings.length),
-      (overallProposal = overallProposal + proposals.length);
+      (overallProposal = overallProposal + proposals.length),
+      (overallExecutions = overallExecutions + executions.length);
 
     upsertAccountGasSpending(
       { id: uniqueAccounts[u].id },
@@ -85,9 +102,11 @@ async function aggregateData() {
         totalVotes: votes.length,
         votesSpending: votesSpending,
         totalStakings: stakings.length,
+        totalExecutions: executions.length,
         stakingSpending: stakingSpending,
         totalProposalCreations: proposals.length,
         proposalCreationSpending: proposalCreationsSpending,
+        executionSpending: proposalExecutionsSpending,
       }
     );
   }
@@ -96,12 +115,14 @@ async function aggregateData() {
     .get("overallSpendings")
     .push({
       id: "overall",
-      overallVotesSpending: overallVotesSpending,
-      overallStakingsSpending: overallStakingsSpending,
-      overallProposalCreationsSpending: overallProposalCreationsSpending,
       overallVotes: overallVotes,
       overallStakings: overallStakings,
       overallProposal: overallProposal,
+      overallExecutions: overallExecutions,
+      overallVotesSpending: overallVotesSpending,
+      overallStakingsSpending: overallStakingsSpending,
+      overallProposalCreationsSpending: overallProposalCreationsSpending,
+      overallExecutionSpending: overallExecutionsSpending,
     })
     .write();
 

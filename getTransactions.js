@@ -63,8 +63,17 @@ async function fetchGasSpenings() {
           JSON.parse(scheme[j].votingMachineAbi)
         );
 
+        const proposalExecutions = await getEvents(
+          scheme[j].votingMachineAddress,
+          process.env.STARTING_BLOCK,
+          process.env.END_BLOCK ? process.env.END_BLOCK : latestBlock,
+          "ExecuteProposal",
+          orgFilter,
+          JSON.parse(scheme[j].votingMachineAbi)
+        );
+
         console.log(
-          `Found ${votes.events.length} vote, ${stakes.events.length} staking & ${proposalCreations.events.length} proposalCreation transactions.`
+          `Found ${votes.events.length} vote, ${stakes.events.length} staking, ${proposalCreations.events.length} proposalCreation & ${proposalExecutions.events.length} proposalExecution transactions.`
         );
         console.log(`Processing now...`);
 
@@ -84,9 +93,11 @@ async function fetchGasSpenings() {
               totalVotes: 0,
               votesSpending: 0,
               totalStakings: 0,
+              totalExecutions: 0,
               stakingSpending: 0,
               totalProposalCreations: 0,
               proposalCreationSpending: 0,
+              executionSpending: 0,
             }
           );
 
@@ -126,9 +137,11 @@ async function fetchGasSpenings() {
               totalVotes: 0,
               votesSpending: 0,
               totalStakings: 0,
+              totalExecutions: 0,
               stakingSpending: 0,
               totalProposalCreations: 0,
               proposalCreationSpending: 0,
+              executionSpending: 0,
             }
           );
 
@@ -145,6 +158,51 @@ async function fetchGasSpenings() {
                 gasPrice: parseInt(tx.gasPrice),
                 gasTotal: receipt.gasUsed * tx.gasPrice,
                 action: "proposalCreation",
+                timestamp: block.timestamp,
+              }
+            );
+          }
+        }
+
+        for (var i in proposalExecutions.events) {
+          var receipt = await web3.eth.getTransactionReceipt(
+            proposalExecutions.events[i].transactionHash
+          );
+          var tx = await web3.eth.getTransaction(
+            proposalExecutions.events[i].transactionHash
+          );
+          var block = await web3.eth.getBlock(
+            proposalExecutions.events[i].blockNumber
+          );
+
+          upsertAccountGasSpending(
+            { id: tx.from },
+            {
+              id: tx.from,
+              totalVotes: 0,
+              votesSpending: 0,
+              totalStakings: 0,
+              totalExecutions: 0,
+              stakingSpending: 0,
+              totalProposalCreations: 0,
+              proposalCreationSpending: 0,
+              executionSpending: 0,
+            }
+          );
+
+          if (receipt.status) {
+            upsertGasSpending(
+              { id: proposalExecutions.events[i].transactionHash },
+              {
+                id: proposalExecutions.events[i].transactionHash,
+                proposalId:
+                  proposalExecutions.events[i].returnValues._proposalId,
+                transactionHash: proposalExecutions.events[i].transactionHash,
+                from: tx.from,
+                gas: receipt.gasUsed,
+                gasPrice: parseInt(tx.gasPrice),
+                gasTotal: receipt.gasUsed * tx.gasPrice,
+                action: "proposalExecutions",
                 timestamp: block.timestamp,
               }
             );

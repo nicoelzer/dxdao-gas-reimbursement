@@ -32,9 +32,10 @@ async function calculateReimbursements() {
     "accountGasSpendings"
   ).value();
 
-  let reimbursementVotes = 0,
+  var reimbursementVotes = 0,
     reimbursementStakings = 0,
     reimbursementProposalCreations = 0,
+    reimbursementExecutions = 0,
     totalReimbusement = 0;
 
   let addressesArr = [];
@@ -48,14 +49,15 @@ async function calculateReimbursements() {
     reimbursementProposalCreations =
       (uniqueAccounts[u].proposalCreationSpending / 100) *
       process.env.PROPOSAL_CREATION;
+    reimbursementExecutions =
+      (uniqueAccounts[u].executionSpending / 100) * process.env.EXECUTION;
     totalReimbusement =
-      (uniqueAccounts[u].votesSpending / 100) * process.env.VOTING +
-      (uniqueAccounts[u].stakingSpending / 100) * process.env.STAKING +
-      (uniqueAccounts[u].proposalCreationSpending / 100) *
-        process.env.PROPOSAL_CREATION;
-
+      reimbursementVotes +
+      reimbursementStakings +
+      reimbursementProposalCreations +
+      reimbursementExecutions;
     addressesArr.push(uniqueAccounts[u].id);
-    reimbursementArr.push(uniqueAccounts[u].totalReimbusement);
+    reimbursementArr.push(totalReimbusement);
 
     upsertAccountGasSpending(
       { id: uniqueAccounts[u].id },
@@ -63,6 +65,7 @@ async function calculateReimbursements() {
         reimbursementVotes: reimbursementVotes,
         reimbursementStakings: reimbursementStakings,
         reimbursementProposalCreations: reimbursementProposalCreations,
+        reimbursementExecutions: reimbursementExecutions,
         totalReimbusement: totalReimbusement,
       }
     );
